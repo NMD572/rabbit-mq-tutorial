@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: receiver
+  rabbitmq:
+    host: armadillo-01.rmq.cloudamqp.com
+    port: 5672
+    username: dztxxnxp
+    password: p3Xyo6m7BOTIGXhMR4j4g-2mKOXaBhv0
+server:
+  port: 9090
+  
