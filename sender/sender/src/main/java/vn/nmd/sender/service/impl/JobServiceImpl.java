@@ -2,17 +2,29 @@ package vn.nmd.sender.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import vn.nmd.sender.entity.Job;
+import vn.nmd.sender.publisher.IRabbitMQProducer;
+import vn.nmd.sender.repository.JobRepository;
 import vn.nmd.sender.service.IJobService;
 
 @Service
 @Transactional(readOnly = true)
 public class JobServiceImpl implements IJobService{
 
+	@Autowired
+	private JobRepository jobRepository;
 	
+	@Autowired
+	private IRabbitMQProducer rabbitMQProducer;
+	
+	private ObjectMapper objectMapper = new ObjectMapper();
 	
 	@Override
 	public List<Job> getList() {
@@ -20,11 +32,16 @@ public class JobServiceImpl implements IJobService{
 	}
 
 	@Override
-	public Job createJob(Job job) {
-		return null;
+	@Transactional(rollbackFor = Exception.class)
+	public Job createJob(Job job) throws JsonProcessingException {
+		jobRepository.save(job);
+		String jobData = objectMapper.writeValueAsString(job);
+		rabbitMQProducer.sendMessage(jobData);
+		return job;
 	}
 
 	@Override
+	@Transactional(rollbackFor = Exception.class)
 	public Job editJob(Job job) {
 		return null;
 	}
@@ -35,6 +52,7 @@ public class JobServiceImpl implements IJobService{
 	}
 
 	@Override
+	@Transactional(rollbackFor = Exception.class)
 	public void deleteJob(Long id) {
 		
 	}
