@@ -30,13 +30,17 @@ public class JobServiceImpl implements IJobService{
 	public List<Job> getList() {
 		return null;
 	}
+	
+	@Override
+	public void sendMessage(String message) {
+		rabbitMQProducer.sendMessage(message);
+	}
 
 	@Override
 	@Transactional(rollbackFor = Exception.class)
 	public Job createJob(Job job) throws JsonProcessingException {
 		jobRepository.save(job);
-		String jobData = objectMapper.writeValueAsString(job);
-		rabbitMQProducer.sendMessage(jobData);
+		rabbitMQProducer.sendJsonMessage(job);
 		return job;
 	}
 

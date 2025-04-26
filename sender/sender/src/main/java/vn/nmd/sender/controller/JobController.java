@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import vn.nmd.sender.entity.Job;
@@ -24,7 +25,18 @@ public class JobController {
 	@Autowired
 	private IJobService jobService;
 
-	@GetMapping
+	@GetMapping("/send-message")
+	public ResponseEntity<?> sendMessage(@RequestParam("message") String message) {
+		try {
+			jobService.sendMessage(message);
+			return new ResponseEntity<>("success", HttpStatus.OK);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	@GetMapping("/list")
 	public ResponseEntity<List<Job>> getList() {
 		try {
 			return new ResponseEntity<>(jobService.getList(), HttpStatus.OK);
@@ -34,7 +46,7 @@ public class JobController {
 		}
 	}
 
-	@PostMapping
+	@PostMapping("/create")
 	public ResponseEntity<Job> createJob(@RequestBody Job job) {
 		try {
 			return new ResponseEntity<>(jobService.createJob(job), HttpStatus.OK);
@@ -45,7 +57,7 @@ public class JobController {
 
 	}
 
-	@PutMapping
+	@PutMapping("/update")
 	public ResponseEntity<Job> editJob(@RequestBody Job job) {
 		try {
 			return new ResponseEntity<>(jobService.editJob(job), HttpStatus.OK);
@@ -56,7 +68,7 @@ public class JobController {
 
 	}
 
-	@GetMapping("/{id}")
+	@GetMapping("detail/{id}")
 	public ResponseEntity<Job> getJob(@PathVariable("id") Long id) {
 		try {
 
@@ -68,7 +80,7 @@ public class JobController {
 
 	}
 
-	@DeleteMapping("/{id}")
+	@DeleteMapping("delete/{id}")
 	public ResponseEntity<Long> deleteJob(@PathVariable("id") Long id) {
 		try {
 			jobService.deleteJob(id);

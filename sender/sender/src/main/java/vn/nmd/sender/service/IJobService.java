@@ -16,4 +16,6 @@ public interface IJobService {
 	Job getJob(Long id);
 
 	void deleteJob(Long id);
+
+	void sendMessage(String message);
 }
