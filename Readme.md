@@ -17,6 +17,7 @@ You can installation my app by:
 
 1. Clone my repository
 2. Replace your setting in application.yml file on receiver and sender service
+![image](https://github.com/user-attachments/assets/18adc365-162f-456f-aea7-42fb28d7b46a)
 
 
 ## Contributing
