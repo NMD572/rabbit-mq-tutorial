@@ -1,17 +1,6 @@
 spring:
   application:
     name: bridge
-  datasource:
-    url: jdbc:postgresql://aws-0-ap-southeast-1.pooler.supabase.com:5432/postgres
-    username: postgres.atpmussdkjnjkwpbzzak
-    password: GGda4545j@!!AA
-    driver-class-name: org.postgresql.Driver
-    hikari:
-      maximum-pool-size: 10 # Maximum number of connections in the pool
-      minimum-idle: 2 # Minimum number of idle connections to maintain
-      idle-timeout: 30000 # Maximum idle time for connections (in milliseconds)
-      max-lifetime: 1800000 # Maximum lifetime of a connection (in milliseconds)
-      connection-timeout: 30000 # Maximum time to wait for a connection (in milliseconds)
   jpa:
     hibernate:
       ddl-auto: update
