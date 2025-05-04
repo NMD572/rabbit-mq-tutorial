@@ -1,4 +1,4 @@
-package vn.nmd.sender.publisher;
+package vn.nmd.receiver.publisher;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 

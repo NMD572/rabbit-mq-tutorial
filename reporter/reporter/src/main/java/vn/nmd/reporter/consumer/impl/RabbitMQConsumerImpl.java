@@ -1,11 +1,11 @@
-package vn.nmd.receiver.consumer.impl;
+package vn.nmd.reporter.consumer.impl;
 
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
-import vn.nmd.receiver.consumer.IRabbitMQConsumer;
 import vn.nmd.receiver.entity.Job;
+import vn.nmd.reporter.consumer.IRabbitMQConsumer;
 
 @Service
 @Slf4j

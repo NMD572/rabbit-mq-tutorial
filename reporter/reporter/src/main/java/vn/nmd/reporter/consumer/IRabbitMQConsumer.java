@@ -1,4 +1,4 @@
-package vn.nmd.receiver.consumer;
+package vn.nmd.reporter.consumer;
 
 import vn.nmd.receiver.entity.Job;
 

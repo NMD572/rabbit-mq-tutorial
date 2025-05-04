@@ -1,24 +1,10 @@
 spring:
   application:
-    name: sender
-  rabbitmq:
-    host: <rabbitmq-host>
-    port: <rabbitmq-port>
-    username: <rabbitmq-username>
-    password: <rabbitmq-password>
-    virtual-host: <rabbitmq-virtual-host-name>
-    queue:
-      name: nmd_first_queue
-      json-queue-name: nmd_json_queue
-    exchange:
-      name: nmd_first_exchange
-    binding:
-      routing-key: nmd_routing_key
-      routing-json-queue-key: nmd_json_routing_key
+    name: bridge
   datasource:
-    url: <postgre-host-url>
-    username: <postgre-username>
-    password: <postgre-password>
+    url: jdbc:postgresql://aws-0-ap-southeast-1.pooler.supabase.com:5432/postgres
+    username: postgres.atpmussdkjnjkwpbzzak
+    password: GGda4545j@!!AA
     driver-class-name: org.postgresql.Driver
     hikari:
       maximum-pool-size: 10 # Maximum number of connections in the pool

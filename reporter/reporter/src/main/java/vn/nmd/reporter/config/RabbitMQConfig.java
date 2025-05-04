@@ -1,4 +1,4 @@
-package vn.nmd.receiver.config;
+package vn.nmd.reporter.config;
 
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;

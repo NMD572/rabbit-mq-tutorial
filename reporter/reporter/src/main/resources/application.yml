@@ -1,6 +1,6 @@
 spring:
   application:
-    name: request_processor
+    name: reporter
   jpa:
     hibernate:
       ddl-auto: update
@@ -9,5 +9,4 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
 server:
-  port: 9090
-  
+  port: 9092
