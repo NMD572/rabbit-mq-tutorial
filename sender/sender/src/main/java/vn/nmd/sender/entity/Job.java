@@ -14,7 +14,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "Job")
+@Table(name = "TUTORIAL_JOB")
 public class Job {
 
 	@Id
