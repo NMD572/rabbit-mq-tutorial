@@ -23,8 +23,15 @@ public class Request {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
-	private String quest;
+	private String request;
 	private Date requestDate;
 	private RequestStatus requestStatus;
-
+	
+	public static void main(String[] args) {
+		Date date = new Date();
+		Long time = date.getTime();
+		System.out.println(date);
+		System.out.println(time);
+		System.out.println(new Date(time));
+	}
 }

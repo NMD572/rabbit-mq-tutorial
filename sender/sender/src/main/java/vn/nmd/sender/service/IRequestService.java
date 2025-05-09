@@ -10,4 +10,5 @@ public interface IRequestService {
 	RequestStatus getStatus(Long id);
 	
 	Request getResult(Long id);
+	
 }

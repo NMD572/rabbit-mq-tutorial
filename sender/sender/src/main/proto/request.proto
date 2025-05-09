@@ -1,0 +1,31 @@
+syntax = "proto3";
+package requestproto;
+option java_multiple_files = true;
+option java_package="vn.nmd.grpc";
+option java_outer_classname="RequestGrpcProto";
+
+service RequestGrpcService {
+	// UNARY - RPC -> receiveNotificationAboutRequestStatus
+	rpc processingRequest(ProcessRequestReqDto) returns (ProcessRequestResDto);
+	rpc getResult(GetResultReqDto) returns (GetResultResDto);
+	// server streaming
+}
+message ProcessRequestReqDto{
+	int64 id = 1;
+	string name = 2;
+	string request = 3;
+	int64 requestDate = 4;
+	string requestStatus = 5;
+}
+message ProcessRequestResDto{
+	int64 id = 1;
+	string requestStatus = 2;
+}
+message GetResultReqDto{
+	int64 id = 1;
+}
+
+message GetResultResDto {
+	int64 id = 1;
+}
+

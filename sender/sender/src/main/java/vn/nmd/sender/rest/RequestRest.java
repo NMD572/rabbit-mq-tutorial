@@ -1,4 +1,4 @@
-package vn.nmd.sender.controller;
+package vn.nmd.sender.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
